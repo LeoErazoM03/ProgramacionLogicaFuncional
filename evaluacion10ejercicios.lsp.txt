@@ -1,0 +1,73 @@
+;; Devuelve el primer elemento de una lista
+(defun primerElemento (lista)
+  (if lista
+      (car lista)
+      nil)
+)
+
+;; ---------------------------------------------
+
+;; Devuelve el segundo elemento de una lista
+(defun segundoElemento (lista)
+  (if lista
+      (cadr lista)
+      nil)
+) 
+
+;; ---------------------------------------------
+
+;; Devuelve el último elemento de una lista
+(defun ultimoElemento (lista)
+  (car (last lista))
+)
+
+;; ---------------------------------------------
+
+;; Cuenta la cantidad de elementos en una lista
+(defun contarElementos (lista)
+  (length lista)
+)
+
+;; ---------------------------------------------
+
+;; Suma todos los elementos de una lista numérica
+(defun sumaElementos (lista)
+  (reduce #'+ lista)
+)
+
+;; ---------------------------------------------
+
+;; Verifica si un elemento está en la lista, devuelve T si está, NIL si no
+(defun buscarElemento (elemento lista)
+  (if (member elemento lista)
+      t 
+      nil)
+)
+
+;; ---------------------------------------------
+
+;; Invierte el orden de los elementos de una lista
+(defun invertirLista (lista)
+  (reverse lista)
+)
+
+;; ---------------------------------------------
+
+;; Busca un elemento en la lista y lo elimina si está presente
+(defun buscarElemento&Eliminar (elemento lista)
+  (remove elemento lista)
+)
+
+;; ---------------------------------------------
+
+;; Devuelve el enésimo elemento de la lista (posición basada en 1)
+(defun buscarEnesimoElemento (n lista)
+  (nth (- n 1) lista)
+)
+
+;; ---------------------------------------------
+
+;; Concatena dos listas en una sola
+(defun concatenarListas (lista1 lista2)
+  (append lista1 lista2)
+)

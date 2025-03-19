@@ -55,13 +55,13 @@ madrede(juanita, lau).
 madrede(juanita, gera).
 madrede(juanita, yesi).
 madrede(juanita, isa).
-abuelade(isaias, paulina).
-abuelade(isaias, leonardo).
-abuelade(isaias, omar).
-abuelade(isaias, karen).
-abuelade(isaias, fabio).
-abuelade(isaias, ivan).
-abuelade(isaias, emilio).
+abuelode(isaias, paulina).
+abuelode(isaias, leonardo).
+abuelode(isaias, omar).
+abuelode(isaias, karen).
+abuelode(isaias, fabio).
+abuelode(isaias, ivan).
+abuelode(isaias, emilio).
 abuelade(juanita, paulina).
 abuelade(juanita, leonardo).
 abuelade(juanita, omar).
@@ -69,3 +69,6 @@ abuelade(juanita, karen).
 abuelade(juanita, fabio).
 abuelade(juanita, ivan).
 abuelade(juanita, emilio).
+
+abuelo(X, Y):-padrede(X, W), padrede(W, Y).
+prov():-madre(X), mujer(X).

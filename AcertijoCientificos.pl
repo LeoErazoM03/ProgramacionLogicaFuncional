@@ -1,4 +1,4 @@
-Acertijo de los Científicos y sus Laboratorios Cinco científicos
+% Acertijo de los Científicos y sus Laboratorios Cinco científicos
 trabajan en un centro de investigación. Cada uno tiene un laboratorio en
 un color diferente y se especializa en una rama distinta de la
 ciencia. Además, cada científico usa un tipo diferente de equipo y
@@ -19,12 +19,39 @@ Computación usa una laptop.  Uno de los científicos usa un osciloscopio.
 El científico en el laboratorio negro bebe agua.  Preguntas a responder
 con Prolog ¿En qué laboratorio trabaja el científico de Química?  ¿Quién
 usa la pipeta?  ¿Cuál es la bebida preferida del científico que
-investiga en Matemáticas?
+investiga en Matemáticas?%
 
 % Predicados monarios
-colorLab(azul)
-colorLab(rojo)
-colorLab(negro)
-colorLab(blanco)
-colorLab(verde)
+% Colores de laboratorio
 
+colorLab(rojo).
+colorLab(azul).
+colorLab(verde).
+colorLab(blanco).
+colorLab(negro).
+colorLab(amarillo).
+colorLab(naranja).
+
+% especialidades 
+
+especializa(biologia).
+especializa(fisica).
+especializa(quimica).
+especializa(matematicas).
+especializa(computación).
+
+% equipo
+
+utiliza(espectometro).
+utiliza(microscopio).
+utiliza(centrifuga).
+utiliza(osciloscopio).
+utiliza(computadora).
+utiliza(pipeta).
+utiliza(balanza).
+
+% Bebida
+
+bebe(te).
+bebe(cafe).
+bebe(agua).

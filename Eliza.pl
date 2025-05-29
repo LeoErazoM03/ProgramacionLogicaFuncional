@@ -30,7 +30,7 @@ eliza(Input) :-
 	readln(Input1),
 	eliza(Input1), !.
 
-% SALUDOS
+% SALUDOS ------------------------------------------------------------------------------------------------
 
 template([hola, mi, nombre, es, s(_)], ['Hola', 0, 'como', estas, tu, '?'], [4]).
 template([buendia, mi, nombre, es, s(_)], ['buen dia', 0, 'como', estas, el, dia, de, hoy, '?'], [4]).
@@ -51,10 +51,22 @@ template([buenas, noches], ['Buenas', 'noches', '¿cómo', 'fue', 'tu', 'día', 
 template([hola, s(_), ',', mucho, gusto], ['Hola', 0, '¡el', 'gusto', 'es', 'mío!', '¿cómo', 'estás', '?'], [1]).
 template([buenas, s(_), ',', soy, s(_)], ['Buenas', 0, 1, '¿en', 'qué', 'puedo', 'ayudarte', '?'], [1,4]).
 
+% PREGUNTAS -----------------------------------------------------------------------------------------------
 
+template([como, te, llamas], ['Me', 'llamo', 'Eliza', '¿en', 'que', 'puedo', 'ayudarte', '?'], []).
+template([quien, eres], ['Soy', 'Eliza', 'tu', 'chatbot', 'de', 'confianza', '?'], []).
+template([cual, es, tu, nombre], ['Mi', 'nombre', 'es', 'Eliza', '?'], []).
+template([cuantos, anos, tienes], ['No', 'tengo', 'edad', 'como', 'un', 'humano', 'pero', 'soy', 'muy', 'sabia', '?'], []).
+template([donde, vives], ['Vivo', 'en', 'el', 'mundo', 'digital', '?'], []).
+template([como, estas], ['Estoy', 'bien', 'gracias', 'por', 'preguntar', '?'], []).
+template([como, te, sientes], ['Me', 'siento', 'feliz', 'de', 'hablar', 'contigo', '?'], []).
+template([estas, bien], ['Estoy', 'muy', 'bien', 'gracias', '¿y', 'tu', '?'], []).
+template([puedes, ayudarme], ['Por', 'supuesto', '¿en', 'qué', 'necesitas', 'ayuda', '?'], []).
+template([que, piensas, de, s(_)], ['Interesante', 'tema', ',', 0, '¿quieres', 'hablar', 'más', 'de', 'eso', '?'], [3]).
 
 template([yo, soy, s(_)], [seguro, que , eres, 0, '?'], [2]).
 
+template([que, piensas, de, s(_)], ['Interesante', 'tema', ',', 0, '¿quieres', 'hablar', 'más', 'de', 'eso', '?'], [3]).
 
 % pregunta algo que le gusta a eliza
 template([te, gustan, las, s(_), _], [flagLike], [3]).

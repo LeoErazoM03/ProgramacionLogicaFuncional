@@ -38,35 +38,52 @@ template([hola, ',', mi, nombre, es, s(_)], ['Hola', 0, 'como', estas, '?'], [5]
 template([buendia, ',', mi, nombre, es, s(_)], ['Buendia', 0,'como', estas, '?'], [5]).
 template([hola, _], ['Hola', 'como', estas, '?'], []).
 template([buendia, _], ['Buendia', 'Como', estas, '?'], []).
-template([hola, soy, s(_)], ['Hola', 0, '¿cómo', 'te', 'encuentras', 'hoy', '?'], [2]).
+template([hola, soy, s(_)], ['Hola', 0, '¿como', 'te', 'encuentras', 'hoy', '?'], [2]).
 template([hola, me, llamo, s(_)], ['Hola', 0, 'gusto', 'en', 'conocerte', '?'], [3]).
-template([buenos, dias, me, llamo, s(_)], ['Buenos', 'días', 0, '¿cómo', 'estás', '?'], [4]).
+template([buenos, dias, me, llamo, s(_)], ['Buenos', 'días', 0, '¿como', 'estas', '?'], [4]).
 template([hey, me, llamo, s(_)], ['¡Hey!', 0, '¿todo', 'bien', '?'], [3]).
-template([holi, soy, s(_)], ['Holi', 0, '¿cómo', 'andas', '?'], [2]).
-template([que, tal , ',' , me, llamo, s(_)], ['¡Qué', 'tal!', 0, '¿cómo', 'estás', '?'], [5]).
-template([hola], ['Hola', '¿cómo', 'estás', '?'], []).
-template([buenos, dias], ['Buenos', 'días', '¿cómo', 'te', 'va', '?'], []).
-template([buenas, tardes], ['Buenas', 'tardes', '¿qué', 'tal', '?'], []).
-template([buenas, noches], ['Buenas', 'noches', '¿cómo', 'fue', 'tu', 'día', '?'], []).
-template([hola, s(_), ',', mucho, gusto], ['Hola', 0, '¡el', 'gusto', 'es', 'mío!', '¿cómo', 'estás', '?'], [1]).
-template([buenas, s(_), ',', soy, s(_)], ['Buenas', 0, 1, '¿en', 'qué', 'puedo', 'ayudarte', '?'], [1,4]).
+template([holi, soy, s(_)], ['Holi', 0, '¿como', 'andas', '?'], [2]).
+template([que, tal , ',' , me, llamo, s(_)], ['¡Que', 'tal!', 0, '¿como', 'estas', '?'], [5]).
+template([hola], ['Hola', '¿como', 'estas', '?'], []).
+template([buenos, dias], ['Buenos', 'dias', '¿como', 'te', 'va', '?'], []).
+template([buenas, tardes], ['Buenas', 'tardes', '¿que', 'tal', '?'], []).
+template([buenas, noches], ['Buenas', 'noches', '¿como', 'fue', 'tu', 'dia', '?'], []).
+template([hola, s(_), ',', mucho, gusto], ['Hola', 0, '¡el', 'gusto', 'es', 'mio!', '¿como', 'estas', '?'], [1]).
+template([buenas, s(_), ',', soy, s(_)], ['Buenas', 0, 1, '¿en', 'que', 'puedo', 'ayudarte', '?'], [1,4]).
 
-% PREGUNTAS -----------------------------------------------------------------------------------------------
+% PREGUNTAS SIMPLES-----------------------------------------------------------------------------------------------
 
-template([como, te, llamas], ['Me', 'llamo', 'Eliza', '¿en', 'que', 'puedo', 'ayudarte', '?'], []).
-template([quien, eres], ['Soy', 'Eliza', 'tu', 'chatbot', 'de', 'confianza', '?'], []).
-template([cual, es, tu, nombre], ['Mi', 'nombre', 'es', 'Eliza', '?'], []).
-template([cuantos, anos, tienes], ['No', 'tengo', 'edad', 'como', 'un', 'humano', 'pero', 'soy', 'muy', 'sabia', '?'], []).
-template([donde, vives], ['Vivo', 'en', 'el', 'mundo', 'digital', '?'], []).
-template([como, estas], ['Estoy', 'bien', 'gracias', 'por', 'preguntar', '?'], []).
-template([como, te, sientes], ['Me', 'siento', 'feliz', 'de', 'hablar', 'contigo', '?'], []).
-template([estas, bien], ['Estoy', 'muy', 'bien', 'gracias', '¿y', 'tu', '?'], []).
-template([puedes, ayudarme], ['Por', 'supuesto', '¿en', 'qué', 'necesitas', 'ayuda', '?'], []).
+template([como, te, llamas, '?'], ['Me', 'llamo', 'Eliza', '¿', 'en', 'que', 'puedo', 'ayudarte', '?'], []).
+template([quien, eres, '?'], ['Soy', 'Eliza', 'tu', 'chatbot', 'de', 'confianza', '?'], []).
+template([cual, es, tu, nombre, '?'], ['Mi', 'nombre', 'es', 'Eliza'], []).
+template([cuantos, anios, tienes, '?'], ['No', 'tengo', 'edad', 'como', 'un', 'humano', 'pero', 'soy', 'muy', 'sabia'], []).
+template([donde, vives, '?'], ['Vivo', 'en', 'el', 'mundo', 'digital'], []).
+template([como, estas, '?'], ['Estoy', 'bien', 'gracias', 'por', 'preguntar'], []).
+template([como, te, sientes, '?'], ['Me', 'siento', 'feliz', 'de', 'hablar', 'contigo'], []).
+template([estas, bien, '?'], ['Estoy', 'muy', 'bien', 'gracias', '¿', 'y', 'tu', '?'], []).
+template([puedes, ayudarme, '?'], ['Por', 'supuesto', '¿', 'en', 'que', 'necesitas', 'ayuda', '?'], []).
+template([que, piensas, de, s(_), '?'], ['Interesante', 'tema', 0, '¿quieres', 'platicarme', 'mas', 'de', 'ese','tema', '?'], [3]).
+
+% PREGUNTAS TECNICAS DE GOTA-----------------------------------------------------------------------------------------------
+
+template([hablame, acerca, de, la, s(_), gota], 
+    ['Claro,', 'la', 'gota', 'es', 'una', 'enfermedad', 'que', 'provoca', 'dolor', 'intenso', 'en', 'las', 'articulaciones', 'por', 'acumulacion', 'de', 'acido', 'urico'], 
+    []).
+template([que, es, la, enfermedad, gota, '?'], ['La', 'gota', 'es', 'una', 'forma', 'de', 'artritis', 'que', 'causa', 'dolor', 'e', 'inflamacion', 'en', 'las', 'articulaciones'], []).
+template([cuales, son, los, sintomas, de, la, gota, '?'], ['Los', 'sintomas', 'incluyen', 'dolor', 'intenso', 'en', 'las', 'articulaciones', 'hinchazon', 'y', 'enrojecimiento'], []).
+template([que, causa, la, gota, '?'], ['La', 'gota', 'es', 'causada', 'por', 'una', 'acumulacion', 'de', 'acido', 'urico', 'en', 'la', 'sangre'], []).
+template([como, se, trata, la, gota, '?'], ['El', 'tratamiento', 'incluye', 'medicamentos', 'antiinflamatorios', 'y', 'una', 'dieta', 'adecuada'], []).
+template([tengo, gota], ['Lamento', 'escuchar', 'eso', '.', '¿Te', 'han', 'dado', 'alguna', 'medicacion', '?'], []).
+template([que, alimentos, debo, evitar, con, gota, '?'], ['Debes', 'evitar', 'carnes', 'rojas', 'mariscos', 'y', 'bebidas', 'alcoholicas'], []).
+template([la, gota, es, hereditaria, '?'], ['Si', ',', 'puede', 'haber', 'una', 'predisposicion', 'genetica', 'a', 'la', 'gota'], []).
+template([se, puede, curar, la, gota, '?'], ['La', 'gota', 'no', 'tiene', 'cura', 'definitiva', ',', 'pero', 'se', 'puede', 'controlar', 'efectivamente'], []).
+template([que, hacer, durante, un, ataque, de, gota, '?'], ['Durante', 'un', 'ataque', 'es', 'importante', 'descansar', 'la', 'articulacion', 'y', 'tomar', 'medicacion', 'prescrita'], []).
+template([que, especialista, trata, la, gota, '?'], ['Un', 'reumatologo', 'es', 'el', 'especialista', 'adecuado', 'para', 'tratar', 'la', 'gota'], []).
+
+
+
 template([que, piensas, de, s(_)], ['Interesante', 'tema', ',', 0, '¿quieres', 'hablar', 'más', 'de', 'eso', '?'], [3]).
-
 template([yo, soy, s(_)], [seguro, que , eres, 0, '?'], [2]).
-
-template([que, piensas, de, s(_)], ['Interesante', 'tema', ',', 0, '¿quieres', 'hablar', 'más', 'de', 'eso', '?'], [3]).
 
 % pregunta algo que le gusta a eliza
 template([te, gustan, las, s(_), _], [flagLike], [3]).

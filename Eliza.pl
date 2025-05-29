@@ -1,3 +1,6 @@
+:- discontiguous template/3.
+:- discontiguous replace0/5.
+
 eliza:-	writeln('Hola, mi nombre es Eliza tu chatbot de confianza,
 por favor ingresa tu consulta sin usar mayusculas, punto final 
 ni acentos, gracias.
@@ -5,28 +8,31 @@ Comencemos a chatear! :'),
 	readln(Input),
 	eliza(Input),!.
 eliza(Input):- Input == ['chao'],
-	writeln('Adios. espero poder verte ayudado.'), !.
+	writeln('Chao hermano. espero poder verte ayudado.'), !.
 eliza(Input):- Input == ['nos', 'vemos'],
-	writeln('Adios. espero poder verte ayudado.'), !.
+	writeln('Nos vemos pronto. espero poder verte ayudado.'), !.
 eliza(Input):- Input == ['hasta', 'luego'],
-	writeln('Adios. espero poder verte ayudado.'), !.
+	writeln('Hasta luego camarada. espero poder verte ayudado.'), !.
 eliza(Input):- Input == ['bye', '.'],
-	writeln('Adios. espero poder verte ayudado.'), !.
+	writeln('Bye bro. espero poder verte ayudado.'), !.
 eliza(Input):- Input == ['bye'],
-	writeln('Adios. espero poder verte ayudado.'), !.
+	writeln('Bye bro. espero poder verte ayudado.'), !.
 eliza(Input):- Input == ['bye Eliza'],
-	writeln('Adios. espero poder verte ayudado.'), !.
+	writeln('Bye Amigo. espero poder verte ayudado.'), !.
 eliza(Input):- Input == ['adios'],
-	writeln('Adios. espero poder verte ayudado.'), !.
+	writeln('Adios hommie. espero poder verte ayudado.'), !.
 eliza(Input):- Input == ['adios', '.'],
-	writeln('Adios. espero poder verte ayudado.'), !.
+	writeln('Adios hommie. espero poder verte ayudado.'), !.
 eliza(Input) :-
 	template(Stim, Resp, IndStim),
 	match(Stim, Input),
 	% si he llegado aquí es que he
 	% hallado el template correcto:
 	replace0(IndStim, Input, 0, Resp, R),
-	writeln(R),
+	clean_commas(R, RClean),
+atomic_list_concat(RClean, ' ', Str),
+writeln(Str),
+
 	readln(Input1),
 	eliza(Input1), !.
 
@@ -51,6 +57,23 @@ template([buenas, noches], ['Buenas', 'noches', '¿como', 'fue', 'tu', 'dia', '?
 template([hola, s(_), ',', mucho, gusto], ['Hola', 0, '¡el', 'gusto', 'es', 'mio!', '¿como', 'estas', '?'], [1]).
 template([buenas, s(_), ',', soy, s(_)], ['Buenas', 0, 1, '¿en', 'que', 'puedo', 'ayudarte', '?'], [1,4]).
 
+%respuestas breves
+template(['bien', 'gracias'], ['me', 'alegra', 'escuchar', 'eso,', '¿en', 'que', 'puedo', 'ayudarte', 'hoy', '?'], []).
+template(['me', 'siento', 'mal'], ['siento', 'que', 'te', 'sientas', 'asi,', '¿quieres', 'hablar', 'un', 'poco', 'mas', 'de', 'eso', '?'], []).
+template(['tengo', 'ganas', 'de', 'llorar'], ['llorar', 'a', 'veces', 'puede', 'ayudar,', '¿quieres', 'contarme', 'que', 'te', 'hace', 'sentir', 'asi', '?'], []).
+template([excelente], ['¡que', 'bueno', 'escuchar', 'eso!', '¿en', 'que', 'puedo', 'ayudarte', '?'], []).
+template([excelente, y, tu], ['¡estupendo!', 'gracias', 'por', 'preguntar,', '¿en', 'que', 'puedo', 'ayudarte', '?'], []).
+template([excelente, y, tu, '?'], ['¡estupendo!', 'gracias', 'por', 'preguntar,', '¿en', 'que', 'puedo', 'ayudarte', '?'], []).
+template([muy, bien, gracias, y, tu], ['¡me', 'alegro!', 'yo', 'también', 'estoy', 'muy', 'bien,', '¿en', 'que', 'puedo', 'ayudarte', '?'], []).
+template([bien, y, tu], ['super', 'bien,', 'gracias', 'por', 'preguntar,', '¿en', 'que', 'te', 'puedo', 'ayudar', '?'], []).
+template([bien, y, tu, '?'], ['super', 'bien,', 'gracias', 'por', 'preguntar,', '¿en', 'que', 'te', 'puedo', 'ayudar', '?'], []).
+template([muy, bien, y, tu], ['me', 'da', 'gusto,', 'yo', 'también', 'estoy', 'bien,', '¿en', 'que', 'puedo', 'ayudarte', '?'], []).
+template([muy, bien, y, tu, '?'], ['me', 'da', 'gusto,', 'yo', 'también', 'estoy', 'bien,', '¿en', 'que', 'puedo', 'ayudarte', '?'], []).
+template([bien, gracias, y, tu], ['super', 'bien,', 'gracias', 'por', 'preguntar,', '¿en', 'que', 'te', 'puedo', 'ayudar', '?'], []).
+template([bien, gracias, y, tu, '?'], ['super', 'bien,', 'gracias', 'por', 'preguntar,', '¿en', 'que', 'te', 'puedo', 'ayudar', '?'], []).
+template([no], ['entiendo', 'que', 'no,', '¿quieres', 'decirme', 'más', 'sobre', 'otra','cosa', '?'], []).
+template([si], ['¡genial!', '¿en', 'que', 'puedo', 'ayudarte', '?'], []).
+
 % PREGUNTAS SIMPLES-----------------------------------------------------------------------------------------------
 
 template([como, te, llamas, '?'], ['Me', 'llamo', 'Eliza', '¿', 'en', 'que', 'puedo', 'ayudarte', '?'], []).
@@ -63,6 +86,7 @@ template([como, te, sientes, '?'], ['Me', 'siento', 'feliz', 'de', 'hablar', 'co
 template([estas, bien, '?'], ['Estoy', 'muy', 'bien', 'gracias', '¿', 'y', 'tu', '?'], []).
 template([puedes, ayudarme, '?'], ['Por', 'supuesto', '¿', 'en', 'que', 'necesitas', 'ayuda', '?'], []).
 template([que, piensas, de, s(_), '?'], ['Interesante', 'tema', 0, '¿quieres', 'platicarme', 'mas', 'de', 'ese','tema', '?'], [3]).
+template([que, piensas, de, s(_)], ['Interesante', 'tema', ',', 0, '¿quieres', 'hablar', 'más', 'de', 'eso', '?'], [3]).
 
 % PREGUNTAS TECNICAS DE GOTA-----------------------------------------------------------------------------------------------
 
@@ -98,16 +122,55 @@ template([la, escoliosis, puede, empeorar, '?'], ['Si', 'no', 'se', 'trata', 'pu
 template([la, escoliosis, afecta, a, adultos, '?'], ['Si,', 'aunque', 'es', 'mas', 'comun', 'en', 'adolescentes,', 'tambien', 'puede', 'aparecer', 'o', 'agravarse', 'en', 'adultos'], []).
 template([la, escoliosis, es, peligrosa, '?'], ['Puede', 'serlo', 'en', 'casos', 'graves,', 'si', 'afecta', 'organos', 'como', 'los', 'pulmones', 'o', 'el', 'corazon'], []).
 
+% IMPLEMENTOS VARIABLE S(_)-----------------------------------------------------------------------------------------------
 
+template([tengo, sintomas, como, s(_), y, s(_)], 
+    ['Podrian', 'ser', sintomas, 'relacionados', 'con', 'gota,', 'pero', 'debes', 'consultar', 'a', 'un', 'medico'], [3, 5]).
+template([que, pasa, si, tengo, s(_), por, gota], 
+    ['Es', 'importante', 'tratar', 0, 'para', 'evitar', 'complicaciones'], [4]).
+template([puedo, tomar, s(_), si, tengo, gota], 
+    ['Debes', 'consultar', 'a', 'un', 'medico', 'antes', 'de', 'tomar', 0, 'ya', 'que', 'algunos', 'medicamentos', 'pueden', 'empeorar', 'la', 'gota'], [3]).
 
+template([tengo, dolor, en, s(_), puede, ser, escoliosis], 
+    ['Es', 'posible', 'que', 'sea', 'escoliosis', 'si', 'el', 'dolor', 'es', 'persistente', 'en', 0, ',', 'consulta', 'a', 'un', 'especialista'], [3]).
+template([que, ejercicios, son, buenos, para, s(_), con, escoliosis], 
+    ['Algunos', 'ejercicios', 'pueden', 'ayudar', 'a', 'mejorar', 0, 'pero', 'deben', 'ser', 'indicados', 'por', 'un', 'especialista'], [6]).
+template([puedo, tener, escoliosis, si, s(_), esta, s(_)], 
+    ['Es', 'posible', ',', 'por', 'ejemplo,', 'si', 0, 'esta', 1, ',', 'debes', 'ir', 'con', 'un', 'medico'], [5, 7]).
+template([la, escoliosis, empeora, con, s(_)], 
+    ['En', 'algunos', 'casos', ',', 'la', 'escoliosis', 'puede', 'empeorar', 'con', 0, ',', 'evitalo', 'si', 'es', 'posible'], [5]).
 
-template([que, piensas, de, s(_)], ['Interesante', 'tema', ',', 0, '¿quieres', 'hablar', 'más', 'de', 'eso', '?'], [3]).
-template([yo, soy, s(_)], [seguro, que , eres, 0, '?'], [2]).
+% GUSTOS DE ELIZA -----------------------------------------------------------------------------------------------
 
-% pregunta algo que le gusta a eliza
-template([te, gustan, las, s(_), _], [flagLike], [3]).
-template([te, gustan, los, s(_), _], [flagLike], [3]).
+template([te, gusta, s(_), s(_), _], [flagLike], [2,3]).
+template([te, gustan, s(_), s(_), _], [flagLike], [2,3]).
 
+likes(programacion).
+likes(tecnologia).
+likes(carros).
+likes(musica).
+likes(cafe).
+likes(libros).
+likes(animales).
+likes(caminatas).
+likes(computadoras).
+likes(lluvia).
+
+elizaLikes(Articulo-Sustantivo, R) :-
+    likes(Sustantivo),
+    R = ['Si,', me, gusta, Articulo, Sustantivo].
+
+elizaLikes(Articulo-Sustantivo, R) :-
+    \+likes(Sustantivo),
+    R = ['No,', no, me, gusta, Articulo, Sustantivo].
+
+% Replace para plantillas flagLike (gustos)
+replace0([I1, I2 | _], Input, _, [flagLike], R):-
+    nth0(I1, Input, Articulo),
+    nth0(I2, Input, Sustantivo),
+    elizaLikes(Articulo-Sustantivo, R).
+
+% CODIGO RESTANTE -----------------------------------------------------------------------------------------------
 
 % pregunta algo que hace eliza
 template([tu, eres, s(_), _], [flagDo], [2]).
@@ -116,30 +179,10 @@ template([tu, eres, s(_), _], [flagDo], [2]).
 template([que, eres, tu, s(_)], [flagIs], [2]).
 template([eres, s(_), '?'], [flagIs], [2]).
 
-
-template([como, estas, tu, '?'], [yo, estoy, bien, ',', gracias, por, preguntar, '.'], []).
-
-
-template([yo, pienso, que, _], [bueno, esa, es, tu, opinion], []).
-template([porque, _], [esa, no, es, una, buena, razon, '.'], []).
-template([i, have, s(_), with, s(_), '.'], ['You', have, to, deal, with, your, 0, and, your, 1, in, a, mature, way, '.'], [2, 4]).
-template([i, s(_),  _], [i, can, recommend, you, a, book, about, that, issue], []).
-template([please, s(_), _], ['No', i, can, not, help, ',', i, am, just, a, machine], []). 
-		 template([tell, me, a, s(_), _], ['No', i, can, not, ',', i, am, bad, at, that], []).
-
-
-				  
+  
 template(_, ['Please', explain, a, little, more, '.'], []). 
-% Lo que le gusta a eliza : flagLike
 
-elizaLikes(X, R):- likes(X), R = ['Yeah', i, like, X].
-elizaLikes(X, R):- \+likes(X), R = ['Nope', i, do, not, like, X].
-likes(apples).
-likes(ponies).
-likes(zombies).
-likes(manzanas).
-likes(computadoras).
-like(carros).
+% Lo que le gusta a eliza : flagLike
 
 
 % lo que hace eliza: flagDo
@@ -180,13 +223,6 @@ match([S|Stim],[_|Input]) :-
 replace0([], _, _, Resp, R):- append(Resp, [], R),!.
 
 
-% Eliza likes:
-replace0([I|_], Input, _, Resp, R):-
-	nth0(I, Input, Atom),
-	nth0(0, Resp, X),
-	X == flagLike,
-	elizaLikes(Atom, R).
-
 
 % Eliza does:
 replace0([I|_], Input, _, Resp, R):-
@@ -216,3 +252,19 @@ replace0([I|Index], Input, N, Resp, R):-
 	select(N, Resp, Atom, R1),
 	N1 is N + 1,
 	replace0(Index, Input, N1, R1, R),!.
+
+% LIMPIEZA -----------------------------------------------------------------------------------------------------------------------------
+
+% Elimina comas mal ubicadas
+clean_commas([], []).
+clean_commas([','|['?'|T]], ['?'|CleanT]) :-
+    clean_commas(T, CleanT).
+clean_commas([','|['.'|T]], ['.'|CleanT]) :-
+    clean_commas(T, CleanT).
+clean_commas([','|[','|T]], Cleaned) :-
+    clean_commas([','|T], Cleaned).
+clean_commas([','|[]], []).
+clean_commas([','|T], Cleaned) :-
+    clean_commas(T, Cleaned).
+clean_commas([H|T], [H|CleanT]) :-
+    clean_commas(T, CleanT).

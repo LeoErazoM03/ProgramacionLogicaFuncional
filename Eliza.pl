@@ -1,6 +1,5 @@
-eliza:-	writeln('Hola , mi nombre es  Eliza tu  chatbot,
-	por favor ingresa tu consulta,
-	usar solo minúsculas sin . al final:'),
+eliza:-	writeln('Hola , mi nombre es  Eliza tu  chatbot de confianza,
+	por favor ingresa tu consulta y solo usa minusculas sin punto final:'),
 	readln(Input),
 	eliza(Input),!.
 eliza(Input):- Input == ['Chao'],
@@ -28,7 +27,6 @@ eliza(Input) :-
 	writeln(R),
 	readln(Input1),
 	eliza(Input1), !.
-
 
 template([hola, mi, nombre, es, s(_), '.'], ['Hola', 0, 'Como', estas, tu, '?'], [4]).
 template([buendia, mi, nombre, es, s(_), '.'], ['buen dia', 'Como', estas, tu, 0, '?'], [4]).
@@ -69,7 +67,7 @@ template([te, gustan, las, s(_), _], [flagLike], [3]).
 template([te, gustan, los, s(_), _], [flagLike], [3]).
 
 
-		 % pregunta algo que hace eliza
+% pregunta algo que hace eliza
 template([tu, eres, s(_), _], [flagDo], [2]).
 % pregunta algo que es eliza
 template([que, eres, tu, s(_)], [flagIs], [2]).

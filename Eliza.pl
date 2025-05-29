@@ -79,6 +79,25 @@ template([la, gota, es, hereditaria, '?'], ['Si', ',', 'puede', 'haber', 'una', 
 template([se, puede, curar, la, gota, '?'], ['La', 'gota', 'no', 'tiene', 'cura', 'definitiva', ',', 'pero', 'se', 'puede', 'controlar', 'efectivamente'], []).
 template([que, hacer, durante, un, ataque, de, gota, '?'], ['Durante', 'un', 'ataque', 'es', 'importante', 'descansar', 'la', 'articulacion', 'y', 'tomar', 'medicacion', 'prescrita'], []).
 template([que, especialista, trata, la, gota, '?'], ['Un', 'reumatologo', 'es', 'el', 'especialista', 'adecuado', 'para', 'tratar', 'la', 'gota'], []).
+template([me, puedo, morir, de, gota, '?'], 
+    ['La', 'gota', 'no', 'suele', 'ser', 'mortal', 'si', 'se', 'trata', 'adecuadamente,', 'pero', 'puede', 'provocar', 'complicaciones', 'graves', 'si', 'no', 'se', 'atiende'], 
+    []).
+
+% PREGUNTAS TECNICAS DE ESCOLIOSIS GENERAL-----------------------------------------------------------------------------------------------
+
+template([hablame, de, la, escoliosis], 
+    ['La', 'escoliosis', 'es', 'una', 'condicion', 'en', 'la', 'que', 'la', 'columna', 'vertebral', 'se', 'curva', 'de', 'forma', 'anormal;', 'puede', 'ser', 'leve', 'o', 'grave', 'y', 'requiere', 'atencion', 'medica'], []).
+template([que, es, la, escoliosis, '?'],['La', 'escoliosis', 'es', 'una', 'curvatura', 'anormal', 'de', 'la', 'columna', 'vertebral'], []).
+template([como, se, si, tengo, escoliosis, '?'], ['Algunos', 'sintomas', 'pueden', 'ser', 'dolor', 'de', 'espalda', 'o', 'desviacion', 'visible', 'de', 'la', 'columna,', 'pero', 'solo', 'un', 'medico', 'puede', 'diagnosticarla'], []).
+template([la, escoliosis, duele, '?'],['En', 'algunos', 'casos', 'puede', 'provocar', 'dolor', 'de', 'espalda,', 'pero', 'no', 'siempre', 'ocurre'], []).
+template([la, escoliosis, es, grave, '?'], ['Depende', 'del', 'grado', 'de', 'curvatura;', 'en', 'casos', 'graves', 'puede', 'afectar', 'la', 'respiracion', 'y', 'la', 'movilidad'], []).
+template([cual, es, la, causa, de, la, escoliosis, '?'], ['En', 'muchos', 'casos', 'la', 'causa', 'es', 'desconocida,', 'aunque', 'tambien', 'puede', 'ser', 'congenita', 'o', 'neuromuscular'], []).
+template([la, escoliosis, tiene, cura, '?'], ['No', 'siempre', 'se', 'cura', 'por', 'completo,', 'pero', 'puede', 'tratarse', 'con', 'fisioterapia,', 'corset', 'o', 'cirugia'], []).
+template([puedo, hacer, ejercicio, con, escoliosis, '?'], ['En', 'la', 'mayoria', 'de', 'los', 'casos', 'se', 'recomienda', 'el', 'ejercicio', 'suave,', 'pero', 'debe', 'ser', 'indicado', 'por', 'un', 'especialista'], []).
+template([la, escoliosis, puede, empeorar, '?'], ['Si', 'no', 'se', 'trata', 'puede', 'empeorar', 'con', 'el', 'tiempo,', 'especialmente', 'en', 'adolescentes'], []).
+template([la, escoliosis, afecta, a, adultos, '?'], ['Si,', 'aunque', 'es', 'mas', 'comun', 'en', 'adolescentes,', 'tambien', 'puede', 'aparecer', 'o', 'agravarse', 'en', 'adultos'], []).
+template([la, escoliosis, es, peligrosa, '?'], ['Puede', 'serlo', 'en', 'casos', 'graves,', 'si', 'afecta', 'organos', 'como', 'los', 'pulmones', 'o', 'el', 'corazon'], []).
+
 
 
 
@@ -121,10 +140,6 @@ likes(zombies).
 likes(manzanas).
 likes(computadoras).
 like(carros).
-
-
-
-
 
 
 % lo que hace eliza: flagDo

@@ -180,7 +180,7 @@ template([que, eres, tu, s(_)], [flagIs], [2]).
 template([eres, s(_), '?'], [flagIs], [2]).
 
   
-template(_, ['Please', explain, a, little, more, '.'], []). 
+template(_, ['Pregunta', de, una, diferente, manera, '.'], []). 
 
 % Lo que le gusta a eliza : flagLike
 
@@ -268,3 +268,110 @@ clean_commas([','|T], Cleaned) :-
     clean_commas(T, Cleaned).
 clean_commas([H|T], [H|CleanT]) :-
     clean_commas(T, CleanT).
+
+% ARBOL GENEALOGICO ----------------------------------------------------------------------------------------------------
+
+% ------------ Hechos base ------------
+
+padre(isaias).
+padre(daniel).
+padre(gera).
+padre(francisco).
+padre(isa).
+padre(vic).
+
+madre(juanita).
+madre(lau).
+madre(ana).
+madre(yesi).
+madre(noemi).
+
+% Relación padre/madre de
+padrede(isaias, vic).
+padrede(isaias, lau).
+padrede(isaias, gera).
+padrede(isaias, yesi).
+padrede(isaias, isa).
+padrede(daniel, leonardo).
+padrede(gera, omar).
+padrede(gera, karen).
+padrede(francisco, fabio).
+padrede(francisco, ivan).
+padrede(isa, emilio).
+
+madrede(juanita, vic).
+madrede(juanita, lau).
+madrede(juanita, gera).
+madrede(juanita, yesi).
+madrede(juanita, isa).
+madrede(lau, leonardo).
+madrede(ana, omar).
+madrede(ana, karen).
+madrede(yesi, fabio).
+madrede(yesi, ivan).
+madrede(noemi, emilio).
+
+% ------------ Reglas útiles ------------
+
+% Definir progenitor
+progenitor(X, Y) :- padrede(X, Y).
+progenitor(X, Y) :- madrede(X, Y).
+
+% Obtener padre o madre directamente
+padre_de(X, Y) :- padrede(X, Y).
+madre_de(X, Y) :- madrede(X, Y).
+
+% Hijos: inverso de padre/madre
+hijo_de(X, Y) :- progenitor(Y, X).
+
+% Hermanos: comparten al menos un progenitor y no son la misma persona
+hermano(X, Y) :-
+    progenitor(P, X),
+    progenitor(P, Y),
+    X \= Y.
+
+% Primos: sus padres son hermanos
+primo(X, Y) :-
+    progenitor(P1, X),
+    progenitor(P2, Y),
+    hermano(P1, P2),
+    X \= Y.
+
+% Ambos padres
+padres_de(Hijo, Padre, Madre) :-
+    padrede(Padre, Hijo),
+    madrede(Madre, Hijo).
+
+match_template([quien, es, el, papa, de, s(Nombre)], [el, papa, de, Nombre, es, Padre], [5]) :-
+    padre_de(Padre, Nombre).
+
+match_template([quien, es, la, mama, de, s(Nombre)], [la, mama, de, Nombre, es, Madre], [5]) :-
+    madre_de(Madre, Nombre).
+
+match_template([quien, es, hermano, de, s(Nombre)], [el, hermano, de, Nombre, es, Hermano], [4]) :-
+    hermano(Hermano, Nombre).
+
+match_template([quienes, son, los, primos, de, s(Nombre)], [los, primos, de, Nombre, son, Primos], [5]) :-
+    findall(P, primo(P, Nombre), Lista),
+    atomic_list_concat(Lista, ',', Primos).
+
+match_template([de, quien, es, hijo, s(Nombre)], [Nombre, es, hijo, de, Padre, y, Madre], [4]) :-
+    padres_de(Nombre, Padre, Madre).
+
+% Reemplaza variables s(X) con el valor X
+resolve_var(s(X), X).
+resolve_var(X, X) :- atomic(X).
+
+% Encuentra una coincidencia entre el input del usuario y un patrón
+match(Input, Output) :-
+    match_template(Input, Response, VarsPos),
+    replace(Response, VarsPos, Input, Output).
+
+% Reemplaza las variables en la respuesta con los valores correspondientes
+replace([], _, _, []).
+replace([s(X)|T], [N|Vars], Input, [R|T2]) :-
+    nth0(N, Input, Word),
+    resolve_var(Word, R),
+    replace(T, Vars, Input, T2).
+replace([H|T], VarsPos, Input, [H|T2]) :-
+    replace(T, VarsPos, Input, T2).

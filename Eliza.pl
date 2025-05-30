@@ -124,21 +124,105 @@ template([la, escoliosis, es, peligrosa, '?'], ['Puede', 'serlo', 'en', 'casos',
 
 % IMPLEMENTOS VARIABLE S(_)-----------------------------------------------------------------------------------------------
 
-template([tengo, sintomas, como, s(_), y, s(_)], 
-    ['Podrian', 'ser', sintomas, 'relacionados', 'con', 'gota,', 'pero', 'debes', 'consultar', 'a', 'un', 'medico'], [3, 5]).
-template([que, pasa, si, tengo, s(_), por, gota], 
-    ['Es', 'importante', 'tratar', 0, 'para', 'evitar', 'complicaciones'], [4]).
-template([puedo, tomar, s(_), si, tengo, gota], 
-    ['Debes', 'consultar', 'a', 'un', 'medico', 'antes', 'de', 'tomar', 0, 'ya', 'que', 'algunos', 'medicamentos', 'pueden', 'empeorar', 'la', 'gota'], [3]).
+template([tengo, sintomas, como, dolor, y, hinchazon],
+    ['Dolor e hinchazon son sintomas frecuentes de un ataque de gota, consulta a tu medico'], []).
 
-template([tengo, dolor, en, s(_), puede, ser, escoliosis], 
-    ['Es', 'posible', 'que', 'sea', 'escoliosis', 'si', 'el', 'dolor', 'es', 'persistente', 'en', 0, ',', 'consulta', 'a', 'un', 'especialista'], [3]).
-template([que, ejercicios, son, buenos, para, s(_), con, escoliosis], 
-    ['Algunos', 'ejercicios', 'pueden', 'ayudar', 'a', 'mejorar', 0, 'pero', 'deben', 'ser', 'indicados', 'por', 'un', 'especialista'], [6]).
-template([puedo, tener, escoliosis, si, s(_), esta, s(_)], 
-    ['Es', 'posible', ',', 'por', 'ejemplo,', 'si', 0, 'esta', 1, ',', 'debes', 'ir', 'con', 'un', 'medico'], [5, 7]).
-template([la, escoliosis, empeora, con, s(_)], 
-    ['En', 'algunos', 'casos', ',', 'la', 'escoliosis', 'puede', 'empeorar', 'con', 0, ',', 'evitalo', 'si', 'es', 'posible'], [5]).
+template([tengo, sintomas, como, enrojecimiento, y, ardor],
+    ['Enrojecimiento y ardor pueden indicar inflamacion aguda por gota'], []).
+
+template([tengo, sintomas, como, fiebre, y, dolor],
+    ['Fiebre y dolor podrian indicar una complicacion, busca atencion medica'], []).
+
+template([tengo, sintomas, como, rigidez, y, dolor],
+    ['Rigidez y dolor pueden presentarse en fases cronicas de la gota'], []).
+
+template([tengo, sintomas, como, dolor, y, calor],
+    ['Dolor y sensacion de calor son signos clasicos de inflamacion por gota'], []).
+template([que, pasa, si, tengo, dolor, por, gota],
+    ['El dolor por gota puede empeorar si no se trata, consulta a un especialista'], []).
+
+template([que, pasa, si, tengo, inflamacion, por, gota],
+    ['La inflamacion es comun en la gota, puede durar dias sin tratamiento'], []).
+
+template([que, pasa, si, tengo, crisis, por, gota],
+    ['Una crisis por gota requiere reposo, hielo y supervision medica'], []).
+
+template([que, pasa, si, tengo, ataque, por, gota],
+    ['Un ataque de gota puede ser muy doloroso, consulta urgente a un medico'], []).
+
+template([que, pasa, si, tengo, enrojecimiento, por, gota],
+    ['El enrojecimiento indica inflamacion activa, deberias aplicar hielo y ver a un medico'], []).
+template([puedo, tomar, ibuprofeno, si, tengo, gota],
+    ['El ibuprofeno puede aliviar el dolor, pero consulta antes con un medico'], []).
+
+template([puedo, tomar, alcohol, si, tengo, gota],
+    ['El alcohol puede desencadenar ataques de gota, evita su consumo'], []).
+
+template([puedo, tomar, aspirina, si, tengo, gota],
+    ['La aspirina puede empeorar la gota, no la tomes sin indicacion medica'], []).
+
+template([puedo, tomar, colchicina, si, tengo, gota],
+    ['La colchicina es un tratamiento comun para la gota, pero requiere receta'], []).
+
+template([puedo, tomar, diureticos, si, tengo, gota],
+    ['Los diureticos pueden aumentar el acido urico, consulta a tu medico'], []).
+template([tengo, dolor, en, espalda, puede, ser, escoliosis],
+    ['El dolor en la espalda puede estar relacionado con escoliosis, acude a un especialista'], []).
+
+template([tengo, dolor, en, columna, puede, ser, escoliosis],
+    ['Dolor en la columna podria ser signo de escoliosis, es importante una evaluacion medica'], []).
+
+template([tengo, dolor, en, cintura, puede, ser, escoliosis],
+    ['Dolor en la cintura puede tener relacion con escoliosis, sobre todo si es cronico'], []).
+
+template([tengo, dolor, en, hombro, puede, ser, escoliosis],
+    ['Dolor en el hombro puede estar asociado a desalineacion postural por escoliosis'], []).
+
+template([tengo, dolor, en, torso, puede, ser, escoliosis],
+    ['El dolor en el torso podria ser una manifestacion de escoliosis avanzada'], []).
+template([que, ejercicios, son, buenos, para, espalda, con, escoliosis],
+    ['Ejercicios de estiramiento y fortalecimiento son utiles para la espalda con escoliosis'], []).
+
+template([que, ejercicios, son, buenos, para, columna, con, escoliosis],
+    ['Para la columna con escoliosis, se recomiendan ejercicios suaves y supervisados'], []).
+
+template([que, ejercicios, son, buenos, para, zona, lumbar, con, escoliosis],
+    ['La zona lumbar se beneficia de ejercicios de core y estabilidad con supervision'], []).
+
+template([que, ejercicios, son, buenos, para, musculos, con, escoliosis],
+    ['Fortalecer los musculos posturales puede mejorar el control de la escoliosis'], []).
+
+template([que, ejercicios, son, buenos, para, cintura, con, escoliosis],
+    ['Para la cintura, ejercicios de movilidad y fortalecimiento pueden ayudar con la escoliosis'], []).
+template([puedo, tener, escoliosis, si, la, espalda, esta, torcida],
+    ['Si la espalda esta torcida, es posible que tengas escoliosis. Acude al ortopedista'], []).
+
+template([puedo, tener, escoliosis, si, la, columna, esta, curvada],
+    ['Una columna curvada es signo claro de escoliosis, busca evaluacion profesional'], []).
+
+template([puedo, tener, escoliosis, si, mi, postura, esta, desalineada],
+    ['La postura desalineada puede indicar escoliosis. Es recomendable hacer estudios'], []).
+
+template([puedo, tener, escoliosis, si, mi, torso, esta, inclinado],
+    ['Un torso inclinado puede ser señal de escoliosis, consulta a un especialista'], []).
+
+template([puedo, tener, escoliosis, si, la, pelvis, esta, desnivelada],
+    ['La pelvis desnivelada puede estar relacionada con escoliosis. Se necesita evaluacion'], []).
+template([la, escoliosis, empeora, con, mala, postura],
+    ['La mala postura puede empeorar la escoliosis, cuida tu posicion al sentarte y caminar'], []).
+
+template([la, escoliosis, empeora, con, cargas, pesadas],
+    ['Levantar cargas pesadas puede agravar la escoliosis, evita ese esfuerzo'], []).
+
+template([la, escoliosis, empeora, con, sedentarismo],
+    ['La falta de actividad fisica puede hacer progresar la escoliosis'], []).
+
+template([la, escoliosis, empeora, con, malos, habitos],
+    ['Malos habitos posturales y de salud pueden agravar la escoliosis'], []).
+
+template([la, escoliosis, empeora, con, falta, de, ejercicio],
+    ['No hacer ejercicio debilita la musculatura y puede empeorar la escoliosis'], []).
+
 
 % GUSTOS DE ELIZA -----------------------------------------------------------------------------------------------
 

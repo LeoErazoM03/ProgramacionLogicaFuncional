@@ -72,3 +72,25 @@ abuelade(juanita, emilio).
 
 abuelo(X, Y):-padrede(X, W), padrede(W, Y).
 prov():-madre(X), mujer(X).
+
+% -------- Match Template Engine --------
+match_template(UserInput, ResponseFinal) :-
+    template(Pattern, ResponsePattern, Indexes),
+    match(Pattern, UserInput, Vars),
+    replace_vars(ResponsePattern, Indexes, Vars, Response),
+    maplist(resolve_var, Response, ResponseFinal).
+
+match([], [], []).
+match([s(_)|Ps], [W|Ws], [W|Vs]) :-
+    match(Ps, Ws, Vs).
+match([P|Ps], [P|Ws], Vs) :-
+    match(Ps, Ws, Vs).
+
+replace_vars([], _, _, []).
+replace_vars([s(_)|T], [_|Is], [V|Vs], [s(V)|R]) :-
+    replace_vars(T, Is, Vs, R).
+replace_vars([X|T], Is, Vs, [X|R]) :-
+    replace_vars(T, Is, Vs, R).
+
+resolve_var(s(X), X).
+resolve_var(X, X) :- atomic(X).
